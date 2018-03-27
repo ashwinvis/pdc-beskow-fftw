@@ -1,9 +1,7 @@
-#!/bin/bash
-
-# pkgdir=$HOME/.local/opt
-pkgdir="/cfs/klemming/nobackup/${USER:0:1}/${USER}/opt/pkg"
-srcdir=$PWD/autotools
-export MAKEFLAGS="-j$(nproc)"
+#!/bin/bash -l
+source beskow_install_base.sh
+pkgdir=$pkgdir
+srcdir=$srcdir/autotools
 
 gnu_install() {
   cd $srcdir
@@ -24,10 +22,10 @@ gnu_install() {
   cd $pkgname
   rm -rf ${pkgdir}
   ./bootstrap
-  ./configure --prefix=${pkgdir} CC=gcc
-  make
-  # make check
-  make install
+  $CONFIGURE --prefix=${pkgdir} CC=gcc
+  $MAKE
+  # $MAKE check
+  $MAKE install
 }
 
 package() {

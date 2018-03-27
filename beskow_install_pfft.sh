@@ -1,4 +1,19 @@
-#!/bin/bash
+#!/bin/bash -l
+source beskow_install_base.sh
+
+# FFTW
+# ----
+# FFTW == 3.3.4 requires patching, whereas 3.3.5 and later versions should work
+# as it is. See: https://github.com/mpip/pfft#install
+
+# You can use the same fftw directory that for p3dfft
+# fftwdir="/opt/fftw/3.3.4.0/haswell"
+fftwdir="$pkgdir"
+
+# Alternatively, set fftwdir as an empty string and mention fftw include and
+# library directories seperately below
+fftwinc=""
+fftwlib=""
 
 # Customizable variables
 # ----------------------
@@ -6,32 +21,13 @@ pkgname='pfft'
 # PFFT version
 pkgver="1.0.8-alpha"
 # Directory in which the source git repository will be downloaded
-srcdir="${PWD}"
+srcdir="$srcdir"
 # Directory to which the compiled pfft library will be installed
-pkgdir="/cfs/klemming/nobackup/${USER:0:1}/${USER}/opt/pkg/${pkgname}-${pkgver}"
-export MAKEFLAGS="-j$(nproc)"
+pkgdir="$pkgdir/${pkgname}-${pkgver}"
 
 # C and Fortran 90 MPI compilers
-export CC=mpiicc
-export FC=mpiifort
-export CFLAGS="-xHost"
-export LDFLAGS="-nofor-main"
-# CC="cc"
-# FC="ftn"
-
-# FFTW
-# ----
-# FFTW == 3.3.4 requires patching, whereas 3.3.5 andlater versions should work
-# as it is. See: https://github.com/mpip/pfft#install
-
-# You can use the same fftw directory that for p3dfft
-# fftwdir="/opt/fftw/3.3.4.0/haswell"
-fftwdir="/cfs/klemming/nobackup/${USER:0:1}/${USER}/opt"
-
-# Alternatively, set fftwdir as an empty string and mention fftw include and
-# library directories seperately below
-fftwinc=""
-fftwlib=""
+export CC=$MPICC
+export FC=$MPIFC
 
 # Should be no reason to change anything below
 # --------------------------------------------

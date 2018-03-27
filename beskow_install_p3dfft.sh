@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -l
+source beskow_install_base.sh
 
 # Customizable variables
 # ----------------------
@@ -6,9 +7,9 @@ pkgname='p3dfft'
 # P3DFFT version
 pkgver=2.7.6
 # Directory in which the source git repository will be downloaded
-srcdir="${PWD}"
+srcdir="$srcdir"
 # Directory to which the compiled p3dfft library will be installed
-pkgdir="/cfs/klemming/nobackup/${USER:0:1}/${USER}/opt/pkg/${pkgname}-${pkgver}"
+pkgdir="$pkgdir/${pkgname}-${pkgver}"
 
 # C and Fortran 90 MPI compilers
 export CC="mpiicc"

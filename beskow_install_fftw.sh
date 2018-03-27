@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -l
+source beskow_install_base.sh
 
 # Customizable variables
 # ----------------------
@@ -6,14 +7,13 @@ pkgname='fftw'
 # FFTW version
 pkgver=3.3.7
 # Directory in which the source tarball will be downloaded and extracted
-srcdir=$PWD
+srcdir=$srcdir
 # Directory to which the compiled FFTW library will be installed
-pkgdir="$SNIC_NOBACKUP/opt/pkg-mar18/${pkgname}-${pkgver}"
-export MAKEFLAGS="-j$(nproc)"
+pkgdir="$pkgdir/${pkgname}-${pkgver}"
 
-export CC="icc"
-export MPICC="cc"
-export F77="ifort"
+export CC="$CC"
+export MPICC="$MPICC"
+export F77="$FC"
 
 # Should be no reason to change anything below
 # --------------------------------------------
@@ -44,24 +44,16 @@ build() {
   cp -a ${pkgname}-${pkgver} ${pkgname}-${pkgver}-single
 
 
-  # do not use upstream default CFLAGS for -march/-mtune
-  export CFLAGS="-fast -xHost"
-  # export CFLAGS="-fast -xHost $(cc --cray-print-opts=cflags)"
-  # export LDFLAGS="$(cc --cray-print-opts=libs)"
   echo $CFLAGS $LDFLAGS
-  # CONFIGURE="aprun -n 1
-  CONFIGURE="
-                 ./configure F77=$F77 CC=$CC MPICC=$MPICC \
+  CONFIGURE="$CONFIGURE
+                 F77=$F77 CC=$CC MPICC=$MPICC \
 	         --prefix=${pkgdir} \
                  --enable-shared \
 		 --enable-threads \
 		 --enable-openmp \
 		 --enable-mpi "
-                 # --host=x86_64-unknown-linux-gnu "
 
   MAKE="make"
-  # MAKE="aprun -n 1 -cc none make"
-  # MAKE="aprun -n 1 -cc none make"
   # build double precision
   cd ${srcdir}/${pkgname}-${pkgver}-double
   $CONFIGURE --enable-sse2 --enable-avx --enable-avx2
@@ -75,19 +67,19 @@ build() {
 
 check() {
   cd ${srcdir}/${pkgname}-${pkgver}-double
-  make check
+  $MAKE check
 
   cd ${srcdir}/${pkgname}-${pkgver}-single
-  make check
+  $MAKE check
 }
 
 package() {
   set -e
   cd ${srcdir}/${pkgname}-${pkgver}-double
-  make install
+  $MAKE install
 
   cd ${srcdir}/${pkgname}-${pkgver}-single
-  make install
+  $MAKE install
 
   set +e
   cd ${pkgdir}/..

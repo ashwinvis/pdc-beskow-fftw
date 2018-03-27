@@ -17,12 +17,6 @@
 
 echo "hostname: "$HOSTNAME
 
-
 printf "\n# np=8 `date` PID $$ launcher_fftw.sh SLURM.fftw.${SLURM_JOBID}.stdout\n./beskow_install_fftw.sh" >> SLURM_JOB.md
-source /etc/profile
-module load gcc/7.2.0
-module swap PrgEnv-cray PrgEnv-intel
-module swap intel intel/18.0.0.128
-module add cdt/17.10 # add cdt module
 
 ./beskow_install_fftw.sh > SLURM.fftw.${SLURM_JOBID}.stdout 2>&1
