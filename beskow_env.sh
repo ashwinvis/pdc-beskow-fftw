@@ -35,7 +35,8 @@ export LDFLAGS="-nofor-main"
 
 ## Batch
 # CONFIGURE="aprun -n 1 -d 1 ./configure"
-CONFIGURE="aprun -n 1 -b ./configure"
+# CONFIGURE="aprun -n 1 -b ./configure"
+CONFIGURE="./configure"
 # --host=x86_64-unknown-linux-gnu "
 MAKE="aprun -n 1 -d $(nproc) make"
 # MAKE="aprun -n 1 -cc none make"
