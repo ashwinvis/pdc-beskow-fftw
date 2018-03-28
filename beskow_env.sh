@@ -11,11 +11,14 @@ module swap intel intel/18.0.0.128
 module add cdt/17.10  # add cdt module
 # module load craype-hugepages2M
 
-pkgdir="$SNIC_NOBACKUP/opt/test"
-srcdir=$PWD/build
+export pkgdir="$SNIC_NOBACKUP/opt/test"
+export srcdir="$SNIC_NOBACKUP/pdc-beskow-fluidfft/build"
 
 mkdir -p $pkgdir
 mkdir -p $srcdir
+
+echo "pkgdir = "$pkgdir
+echo "srcdir = "$srcdir
 
 export MAKEFLAGS="-j$(nproc)"
 export CC=icc
@@ -31,7 +34,8 @@ export LDFLAGS="-nofor-main"
 # MAKE="aprun -n 1 -d $(nproc) -b make"
 
 ## Batch
-CONFIGURE="aprun -n 1 ./configure"
+# CONFIGURE="aprun -n 1 -d 1 ./configure"
+CONFIGURE="aprun -n 1 -b ./configure"
 # --host=x86_64-unknown-linux-gnu "
 MAKE="aprun -n 1 -d $(nproc) make"
 # MAKE="aprun -n 1 -cc none make"

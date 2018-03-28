@@ -1,5 +1,5 @@
 #!/bin/bash -l
-source beskow_install_base.sh
+source beskow_env.sh
 pkgdir=$pkgdir
 srcdir=$srcdir/autotools
 

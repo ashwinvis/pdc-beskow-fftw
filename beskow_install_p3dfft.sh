@@ -1,5 +1,5 @@
 #!/bin/bash -l
-source beskow_install_base.sh
+source beskow_env.sh
 
 # Customizable variables
 # ----------------------
@@ -78,9 +78,9 @@ build() {
 package() {
   set -e
   cd ${srcdir}/${pkgname}-${pkgver}
-  # make install
+  # $MAKE install
   ## If the above fails, use (with caution):
-  make -i install
+  $MAKE -i install
 
   set +e
   cd ${pkgdir}/..

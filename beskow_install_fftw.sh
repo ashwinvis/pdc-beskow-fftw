@@ -1,5 +1,5 @@
 #!/bin/bash -l
-source beskow_install_base.sh
+source beskow_env.sh
 
 # Customizable variables
 # ----------------------
@@ -31,20 +31,21 @@ clean() {
   rm -rf ${pkgdir}
 
   cd ${srcdir}/${pkgname}-${pkgver}-double
-  make clean
+  $MAKE -i clean
 
   cd ${srcdir}/${pkgname}-${pkgver}-single
-  make clean
+  $MAKE -i clean
 }
 
 build() {
   cd ${srcdir}
 
-  cp -a ${pkgname}-${pkgver} ${pkgname}-${pkgver}-double
-  cp -a ${pkgname}-${pkgver} ${pkgname}-${pkgver}-single
+  cp -an ${pkgname}-${pkgver} ${pkgname}-${pkgver}-double
+  cp -an ${pkgname}-${pkgver} ${pkgname}-${pkgver}-single
 
 
   echo $CFLAGS $LDFLAGS
+  echo "PWD=$PWD"
   CONFIGURE="$CONFIGURE
                  F77=$F77 CC=$CC MPICC=$MPICC \
 	         --prefix=${pkgdir} \
@@ -53,7 +54,8 @@ build() {
 		 --enable-openmp \
 		 --enable-mpi "
 
-  MAKE="make"
+  echo $CONFIGURE
+  echo $MAKE
   # build double precision
   cd ${srcdir}/${pkgname}-${pkgver}-double
   $CONFIGURE --enable-sse2 --enable-avx --enable-avx2
@@ -94,7 +96,7 @@ then
   download
 fi
 
-clean
+# clean
 build
 # check
 package

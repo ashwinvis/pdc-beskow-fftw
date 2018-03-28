@@ -1,5 +1,5 @@
 #!/bin/bash -l
-source beskow_install_base.sh
+source beskow_env.sh
 
 # FFTW
 # ----
@@ -71,7 +71,7 @@ build() {
 package() {
   set -e
   cd ${srcdir}/${pkgname}-${pkgver}
-  make install
+  $MAKE install
 
   set +e
   cd ${pkgdir}/..
