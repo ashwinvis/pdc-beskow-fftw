@@ -11,10 +11,6 @@ srcdir=$srcdir
 # Directory to which the compiled FFTW library will be installed
 pkgdir="$pkgdir/${pkgname}-${pkgver}"
 
-export CC="$CC"
-export MPICC="$MPICC"
-export F77="$FC"
-
 # Should be no reason to change anything below
 # --------------------------------------------
 download() {
@@ -24,7 +20,8 @@ download() {
   if [ ! -f ${pkgname}-${pkgver}.tar.gz ]; then
     wget http://www.fftw.org/${pkgname}-${pkgver}.tar.gz
   fi
-  tar vxzf $pkgname-$pkgver.tar.gz
+  echo "Extracting FFTW tarball..."
+  tar xzf $pkgname-$pkgver.tar.gz
 }
 
 clean() {
@@ -43,11 +40,10 @@ build() {
   cp -an ${pkgname}-${pkgver} ${pkgname}-${pkgver}-double
   cp -an ${pkgname}-${pkgver} ${pkgname}-${pkgver}-single
 
-
   echo $CFLAGS $LDFLAGS
   echo "PWD=$PWD"
   CONFIGURE="$CONFIGURE
-                 F77=$F77 CC=$CC MPICC=$MPICC \
+                 F77=$FC CC=$CC MPICC=$MPICC \
 	         --prefix=${pkgdir} \
                  --enable-shared \
 		 --enable-threads \
