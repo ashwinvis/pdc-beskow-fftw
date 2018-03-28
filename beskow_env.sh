@@ -21,24 +21,22 @@ echo "pkgdir = "$pkgdir
 echo "srcdir = "$srcdir
 
 export MAKEFLAGS="-j$(nproc)"
-export CC=icc
-export FC=ifort
+export CC=cc
+export FC=ftn
 export MPICC=cc
 export MPIFC=ftn
 
 export CFLAGS="-fast -xHost"
 export LDFLAGS="-nofor-main"
 
-## Interactive
-# CONFIGURE="aprun -n 1 -b ./configure"
-# MAKE="aprun -n 1 -d $(nproc) -b make"
-
-## Batch
+## Commands
 # CONFIGURE="aprun -n 1 -d 1 ./configure"
-# CONFIGURE="aprun -n 1 -b ./configure"
-CONFIGURE="./configure"
+CONFIGURE="aprun -n 1 -b ./configure"
+# CONFIGURE="./configure"
 # --host=x86_64-unknown-linux-gnu "
-MAKE="aprun -n 1 -d $(nproc) make"
+
+# MAKE="aprun -n 1 -d $(nproc) make"
+MAKE="aprun -n 1 -d $(nproc) -b make"
 # MAKE="aprun -n 1 -cc none make"
 
 module list
