@@ -7,18 +7,22 @@ P3DFFT:=no
 
 LD:=CC -dynamic
 CC:=CC
-FLAGS:= -g -O3 -Wall
+FLAGS:= -g -Ofast -Wall
 LDFLAGS:=
 LIBS:= -ldl -lhwloc -lm -lgfortran
 
-## If using preinstalled FFTW, `module load fftw`,
+## If using preinstalled FFTW,
+## `module load fftw`,
 ## switch off FFTW_OMP, PFFT, P3DFFT and use the following 2 lines
-# LIB_DIR:=-L$(FFTW_DIR)
-# INC_DIR:=-I. -I../base -I$(INTEL_PATH)/compiler/include/ -I$(FFTW_INC)
+## OR
+## `module load cray-fftw`,
+## switch off PFFT, P3DFFT and use the following 2 lines
+LIB_DIR:=-L$(FFTW_DIR)
+INC_DIR:=-I. -I../base -I$(INTEL_PATH)/compiler/include/ -I$(FFTW_INC)
 
-## If using local installation for FFTW, use:
-LIB_DIR:=-L$(SNIC_NOBACKUP)/opt/lib
-INC_DIR:=-I. -I../base -I$(INTEL_PATH)/compiler/include/ -I$(SNIC_NOBACKUP)/opt/include
+## If using local installation for FFTW, P3DFFT and PFFT use:
+LIB_DIR+=-L$(SNIC_NOBACKUP)/opt/lib
+INC_DIR+=-I. -I../base -I$(INTEL_PATH)/compiler/include/ -I$(SNIC_NOBACKUP)/opt/include
 
 SOURCES_CPP := $(wildcard base*.cpp)
 SOURCES_CPP += fft3d_with_fftw3d.cpp fft3dmpi_with_fftw1d.cpp fft3dmpi_with_fftwmpi3d.cpp test_bench.cpp
@@ -107,7 +111,7 @@ OBJECTS_BUILD = build/$(subst $(space),$(space)build/,$(OBJECTS_CPP_BASE) $(OBJE
 
 .PHONY: help all clean _build_dir
 
-all: build test_bench.out
+all: clean build test_bench.out
 
 build:
 	mkdir -p build

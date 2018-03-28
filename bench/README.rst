@@ -16,6 +16,6 @@ HOWTO
 =====
 Meant only for Beskow. Run::
 
-        make clean build test_bench.out
+        make
         make test
         make testmpi
