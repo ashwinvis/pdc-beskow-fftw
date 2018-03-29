@@ -11,8 +11,8 @@ module swap intel intel/18.0.0.128
 # module add cdt/17.10  # add cdt module
 # module load craype-hugepages2M
 
-export pkgdir="$SNIC_NOBACKUP/opt/test"
-export srcdir="$SNIC_NOBACKUP/pdc-beskow-fluidfft/build"
+pkgdir="$SNIC_NOBACKUP/opt/test"
+srcdir="$SNIC_NOBACKUP/pdc-beskow-fluidfft/build"
 
 mkdir -p $pkgdir
 mkdir -p $srcdir
@@ -26,7 +26,8 @@ export FC=ftn
 export MPICC=cc
 export MPIFC=ftn
 
-export CFLAGS="-fast"  # -xHost"
+export CFLAGS="-Ofast"  # -xHost"
+export FCFLAGS="-Ofast"
 export LDFLAGS="-nofor-main"
 
 ## Commands

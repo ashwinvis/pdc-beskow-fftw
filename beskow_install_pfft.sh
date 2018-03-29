@@ -7,13 +7,12 @@ source beskow_env.sh
 # as it is. See: https://github.com/mpip/pfft#install
 
 # You can use the same fftw directory that for p3dfft
-# fftwdir="/opt/fftw/3.3.4.0/haswell"
-fftwdir="$pkgdir"
+# fftwdir="$pkgdir"
 
 # Alternatively, set fftwdir as an empty string and mention fftw include and
 # library directories seperately below
-fftwinc=""
-fftwlib=""
+fftwinc=$FFTW_INC
+fftwlib=$FFTW_DIR
 
 # Customizable variables
 # ----------------------
@@ -24,10 +23,6 @@ pkgver="1.0.8-alpha"
 srcdir="$srcdir"
 # Directory to which the compiled pfft library will be installed
 pkgdir="$pkgdir/${pkgname}-${pkgver}"
-
-# C and Fortran 90 MPI compilers
-export CC=$MPICC
-export FC=$MPIFC
 
 # Should be no reason to change anything below
 # --------------------------------------------
@@ -54,10 +49,9 @@ build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   export LANG=C
   ./bootstrap.sh
-  CONFIGURE="./configure \
+  CONFIGURE="$CONFIGURE
             --prefix=${pkgdir} \
             CC=${CC} FC=${FC} MPICC=${CC} MPIFC=${FC} "
-            # --host=x86_64-unknown-linux-gnu
   if [ -n "$fftwdir" ]; then
     CONFIGURE+="--with-fftw3=${fftwdir}"
   else
@@ -65,7 +59,7 @@ build() {
   fi
   echo ${CONFIGURE}
   ${CONFIGURE}
-  make
+  ${MAKE}
 }
 
 package() {

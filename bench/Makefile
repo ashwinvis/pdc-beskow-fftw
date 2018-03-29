@@ -2,8 +2,8 @@ SINGLE_PREC:=no
 OMP:=no
 FFTW_OMP:=no
 CUDA:=no
-PFFT:=no
-P3DFFT:=no
+PFFT:=yes
+P3DFFT:=yes
 
 LD:=CC -dynamic
 CC:=CC

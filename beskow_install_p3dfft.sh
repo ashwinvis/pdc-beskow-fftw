@@ -5,25 +5,17 @@ source beskow_env.sh
 # ----------------------
 pkgname='p3dfft'
 # P3DFFT version
-pkgver=2.7.6
+pkgver=2.7.5
 # Directory in which the source git repository will be downloaded
 srcdir="$srcdir"
 # Directory to which the compiled p3dfft library will be installed
 pkgdir="$pkgdir/${pkgname}-${pkgver}"
 
-# C and Fortran 90 MPI compilers
-export CC="mpiicc"
-export FC="mpiifort"
-export CFLAGS="-xHost"
-export LDFLAGS="-nofor-main"
-# CC="cc"
-# FC="ftn"
-
 # FFTW
 # ----
-# fftwdir="/opt/fftw/3.3.4.0/haswell"
-fftwdir="/cfs/klemming/nobackup/${USER:0:1}/${USER}/opt"
-autotoolsdir="$fftwdir"
+fftwdir="$(dirname $FFTW_DIR)"
+autotoolsdir="/cfs/klemming/nobackup/${USER:0:1}/${USER}/opt"
+# fftwdir="$autotoolsdir"
 
 # Should be no reason to change anything below
 # --------------------------------------------
@@ -65,14 +57,13 @@ build() {
   libtoolize && autoheader && aclocal && autoconf && automake --add-missing
   ## If the above fails, use:
   # autoreconf -fvi
-  ./configure \
+  $CONFIGURE \
     --prefix=${pkgdir} \
     --enable-intel \
     --enable-fftw --with-fftw=${fftwdir} \
     CC=${CC} FC=${FC} LDFLAGS=${LDFLAGS}
-    # --host=x86_64-unknown-linux-gnu \
 
-  make
+  $MAKE -j 1
 }
 
 package() {
@@ -80,7 +71,7 @@ package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   # $MAKE install
   ## If the above fails, use (with caution):
-  $MAKE -i install
+  $MAKE install
 
   set +e
   cd ${pkgdir}/..
