@@ -1,17 +1,18 @@
 #!/bin/bash -l
 
 # https://www.pdc.kth.se/support/documents/development.html#compiling-dynamically
-export CRAYPE_LINK_TYPE=dynamic
-# export CRAY_ROOTFS=DSL
+
+export CRAYPE_LINK_TYPE=dynamic 
 
 # source /etc/profile
 module load gcc/7.2.0
 module swap PrgEnv-cray PrgEnv-intel
 module swap intel intel/18.0.0.128
-module add cdt/17.10  # add cdt module
+module load cray-fftw/3.3.6.2
+module add cdt/17.10  # cdt module is mandatory to use hugepages
 # module load craype-hugepages32M
 
-pkgdir="$SNIC_NOBACKUP/opt/test"
+pkgdir="$SNIC_NOBACKUP/opt/test_cray_fftw"
 srcdir="$SNIC_NOBACKUP/pdc-beskow-fluidfft/build"
 
 mkdir -p $pkgdir
