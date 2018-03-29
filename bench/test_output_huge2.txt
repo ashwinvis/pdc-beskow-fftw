@@ -1,0 +1,224 @@
+
+--------
+nb_proc: 4
+N0 = 64 ; N1 = 32 ; N2 = 16
+Initialization (FFT3DMPIWithFFTWMPI3D) done in 0.127707 s
+tests (FFT3DMPIWithFFTWMPI3D)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithFFTWMPI3D):  0.000087 s
+time ifft (FFT3DMPIWithFFTWMPI3D): 0.000092 s
+bench from cpp...
+time fft (FFT3DMPIWithFFTWMPI3D):  0.000102 s
+time ifft (FFT3DMPIWithFFTWMPI3D): 0.000070 s
+
+--------
+nb_proc: 4
+N0 = 64 ; N1 = 32 ; N2 = 16
+Initialization (FFT3DMPIWithFFTW1D) done in 0.059084 s
+tests (FFT3DMPIWithFFTW1D)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithFFTW1D):  0.000248 s
+time ifft (FFT3DMPIWithFFTW1D): 0.000220 s
+bench from cpp...
+time fft (FFT3DMPIWithFFTW1D):  0.000255 s
+time ifft (FFT3DMPIWithFFTW1D): 0.000221 s
+
+--------
+nb_proc: 4
+N0 = 64 ; N1 = 32 ; N2 = 16
+Using processor grid 2 x 2
+ Running on            1 threads
+Initialization (FFT3DMPIWithP3DFFT) done in 0.298283 s
+tests (FFT3DMPIWithP3DFFT)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithP3DFFT):  0.000107 s
+time ifft (FFT3DMPIWithP3DFFT): 0.000090 s
+bench from cpp...
+time fft (FFT3DMPIWithP3DFFT):  0.000085 s
+time ifft (FFT3DMPIWithP3DFFT): 0.000080 s
+
+--------
+nb_proc: 4
+N0 = 64 ; N1 = 32 ; N2 = 16
+proc mesh: 2 x 2 mpi processes
+Initialization (FFT3DMPIWithPFFT) done in 0.086775 s
+tests (FFT3DMPIWithPFFT)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithPFFT):  0.000110 s
+time ifft (FFT3DMPIWithPFFT): 0.000101 s
+bench from cpp...
+time fft (FFT3DMPIWithPFFT):  0.000113 s
+time ifft (FFT3DMPIWithPFFT): 0.000125 s
+Application 12906958 resources: utime ~3s, stime ~1s, Rss ~18008, inblocks ~1881, outblocks ~935
+
+--------
+nb_proc: 4
+N0 = 128 ; N1 = 128 ; N2 = 128
+Initialization (FFT3DMPIWithFFTWMPI3D) done in 0.448360 s
+tests (FFT3DMPIWithFFTWMPI3D)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithFFTWMPI3D):  0.006781 s
+time ifft (FFT3DMPIWithFFTWMPI3D): 0.008356 s
+bench from cpp...
+time fft (FFT3DMPIWithFFTWMPI3D):  0.006748 s
+time ifft (FFT3DMPIWithFFTWMPI3D): 0.008502 s
+
+--------
+nb_proc: 4
+N0 = 128 ; N1 = 128 ; N2 = 128
+Initialization (FFT3DMPIWithFFTW1D) done in 0.701295 s
+tests (FFT3DMPIWithFFTW1D)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithFFTW1D):  0.018449 s
+time ifft (FFT3DMPIWithFFTW1D): 0.019767 s
+bench from cpp...
+time fft (FFT3DMPIWithFFTW1D):  0.018472 s
+time ifft (FFT3DMPIWithFFTW1D): 0.019835 s
+
+--------
+nb_proc: 4
+N0 = 128 ; N1 = 128 ; N2 = 128
+Using processor grid 2 x 2
+ Running on            1 threads
+Initialization (FFT3DMPIWithP3DFFT) done in 1.506694 s
+tests (FFT3DMPIWithP3DFFT)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithP3DFFT):  0.008677 s
+time ifft (FFT3DMPIWithP3DFFT): 0.008465 s
+bench from cpp...
+time fft (FFT3DMPIWithP3DFFT):  0.008664 s
+time ifft (FFT3DMPIWithP3DFFT): 0.008452 s
+
+--------
+nb_proc: 4
+N0 = 128 ; N1 = 128 ; N2 = 128
+proc mesh: 2 x 2 mpi processes
+Initialization (FFT3DMPIWithPFFT) done in 0.622758 s
+tests (FFT3DMPIWithPFFT)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithPFFT):  0.010005 s
+time ifft (FFT3DMPIWithPFFT): 0.012299 s
+bench from cpp...
+time fft (FFT3DMPIWithPFFT):  0.009868 s
+time ifft (FFT3DMPIWithPFFT): 0.012302 s
+Application 12906959 resources: utime ~22s, stime ~1s, Rss ~50808, inblocks ~1881, outblocks ~935
+
+--------
+nb_proc: 4
+N0 = 256 ; N1 = 256 ; N2 = 256
+Initialization (FFT3DMPIWithFFTWMPI3D) done in 1.188601 s
+tests (FFT3DMPIWithFFTWMPI3D)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithFFTWMPI3D):  0.090692 s
+time ifft (FFT3DMPIWithFFTWMPI3D): 0.099694 s
+bench from cpp...
+time fft (FFT3DMPIWithFFTWMPI3D):  0.090498 s
+time ifft (FFT3DMPIWithFFTWMPI3D): 0.099698 s
+
+--------
+nb_proc: 4
+N0 = 256 ; N1 = 256 ; N2 = 256
+Initialization (FFT3DMPIWithFFTW1D) done in 1.461444 s
+tests (FFT3DMPIWithFFTW1D)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithFFTW1D):  0.248149 s
+time ifft (FFT3DMPIWithFFTW1D): 0.247007 s
+bench from cpp...
+time fft (FFT3DMPIWithFFTW1D):  0.248478 s
+time ifft (FFT3DMPIWithFFTW1D): 0.246683 s
+
+--------
+nb_proc: 4
+N0 = 256 ; N1 = 256 ; N2 = 256
+Using processor grid 2 x 2
+ Running on            1 threads
+Initialization (FFT3DMPIWithP3DFFT) done in 9.030748 s
+tests (FFT3DMPIWithP3DFFT)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithP3DFFT):  0.104668 s
+time ifft (FFT3DMPIWithP3DFFT): 0.111499 s
+bench from cpp...
+time fft (FFT3DMPIWithP3DFFT):  0.105030 s
+time ifft (FFT3DMPIWithP3DFFT): 0.111484 s
+
+--------
+nb_proc: 4
+N0 = 256 ; N1 = 256 ; N2 = 256
+proc mesh: 2 x 2 mpi processes
+Initialization (FFT3DMPIWithPFFT) done in 7.055100 s
+tests (FFT3DMPIWithPFFT)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithPFFT):  0.135089 s
+time ifft (FFT3DMPIWithPFFT): 0.194460 s
+bench from cpp...
+time fft (FFT3DMPIWithPFFT):  0.135335 s
+time ifft (FFT3DMPIWithPFFT): 0.194519 s
+Application 12906960 resources: utime ~180s, stime ~4s, Rss ~266556, inblocks ~1881, outblocks ~935
+
+--------
+nb_proc: 4
+N0 = 512 ; N1 = 512 ; N2 = 512
+Initialization (FFT3DMPIWithFFTWMPI3D) done in 6.173700 s
+tests (FFT3DMPIWithFFTWMPI3D)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithFFTWMPI3D):  0.906303 s
+time ifft (FFT3DMPIWithFFTWMPI3D): 0.907119 s
+bench from cpp...
+time fft (FFT3DMPIWithFFTWMPI3D):  0.906245 s
+time ifft (FFT3DMPIWithFFTWMPI3D): 0.907012 s
+
+--------
+nb_proc: 4
+N0 = 512 ; N1 = 512 ; N2 = 512
+Initialization (FFT3DMPIWithFFTW1D) done in 9.429296 s
+tests (FFT3DMPIWithFFTW1D)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithFFTW1D):  2.587661 s
+time ifft (FFT3DMPIWithFFTW1D): 2.590944 s
+bench from cpp...
+time fft (FFT3DMPIWithFFTW1D):  2.586585 s
+time ifft (FFT3DMPIWithFFTW1D): 2.590913 s
+
+--------
+nb_proc: 4
+N0 = 512 ; N1 = 512 ; N2 = 512
+Using processor grid 2 x 2
+ Running on            1 threads
+Initialization (FFT3DMPIWithP3DFFT) done in 31.453239 s
+tests (FFT3DMPIWithP3DFFT)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithP3DFFT):  0.853802 s
+time ifft (FFT3DMPIWithP3DFFT): 0.893072 s
+bench from cpp...
+time fft (FFT3DMPIWithP3DFFT):  0.853824 s
+time ifft (FFT3DMPIWithP3DFFT): 0.892883 s
+
+--------
+nb_proc: 4
+N0 = 512 ; N1 = 512 ; N2 = 512
+proc mesh: 2 x 2 mpi processes
+Initialization (FFT3DMPIWithPFFT) done in 54.953759 s
+tests (FFT3DMPIWithPFFT)...
+ OK!
+bench from cpp...
+time fft (FFT3DMPIWithPFFT):  1.084957 s
+time ifft (FFT3DMPIWithPFFT): 1.594494 s
+bench from cpp...
+time fft (FFT3DMPIWithPFFT):  1.087822 s
+time ifft (FFT3DMPIWithPFFT): 1.594503 s
+Application 12906962 resources: utime ~1330s, stime ~83s, Rss ~1863304, inblocks ~1881, outblocks ~935

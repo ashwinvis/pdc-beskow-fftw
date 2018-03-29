@@ -8,10 +8,10 @@
 module load gcc/7.2.0
 module swap PrgEnv-cray PrgEnv-intel
 module swap intel intel/18.0.0.128
-# module add cdt/17.10  # add cdt module
-# module load craype-hugepages2M
+module add cdt/17.10  # add cdt module
+module load craype-hugepages32M
 
-pkgdir="$SNIC_NOBACKUP/opt/test"
+pkgdir="$SNIC_NOBACKUP/opt/test_huge32"
 srcdir="$SNIC_NOBACKUP/pdc-beskow-fluidfft/build"
 
 mkdir -p $pkgdir

@@ -11,6 +11,8 @@ FLAGS:= -g -Ofast -Wall
 LDFLAGS:=
 LIBS:= -ldl -lhwloc -lm -lgfortran
 
+OUTPUT:=test_output_huge32.txt
+
 ## If using preinstalled FFTW,
 ## `module load fftw`,
 ## switch off FFTW_OMP, PFFT, P3DFFT and use the following 2 lines
@@ -144,11 +146,11 @@ test_bench.out: $(OBJECTS) $(OBJECTS_CPP_BASE)
 
 test:
 	export CRAY_ROOTFS=DSL
-	aprun -n 1 ./test_bench.out --N0=64 --N1=32 --N2=16
+	aprun -n 1 ./test_bench.out --N0=64 --N1=32 --N2=16 >> $(OUTPUT) 2>&1
 
 testmpi:
 	export CRAY_ROOTFS=DSL
-	aprun -n 4 ./test_bench.out --N0=64 --N1=32 --N2=16
-	aprun -n 4 ./test_bench.out --N0=128 --N1=128 --N2=128
-	aprun -n 4 ./test_bench.out --N0=256 --N1=256 --N2=256
-	aprun -n 4 ./test_bench.out --N0=512 --N1=512 --N2=512
+	aprun -n 4 ./test_bench.out --N0=64 --N1=32 --N2=16 >> $(OUTPUT) 2>&1
+	aprun -n 4 ./test_bench.out --N0=128 --N1=128 --N2=128 >> $(OUTPUT) 2>&1
+	aprun -n 4 ./test_bench.out --N0=256 --N1=256 --N2=256 >> $(OUTPUT) 2>&1
+	aprun -n 4 ./test_bench.out --N0=512 --N1=512 --N2=512 >> $(OUTPUT) 2>&1
