@@ -26,12 +26,19 @@ download() {
 
 clean() {
   rm -rf ${pkgdir}
+  
+  if [[ "$1" == "delete" ]]; then
+      echo "rm -rf ..."
+      rm -rf ${srcdir}/${pkgname}-${pkgver}-double
+      rm -rf ${srcdir}/${pkgname}-${pkgver}-single
+  else
+      echo "$MAKE -i clean"
+      cd ${srcdir}/${pkgname}-${pkgver}-double
+      $MAKE -i clean
 
-  cd ${srcdir}/${pkgname}-${pkgver}-double
-  $MAKE -i clean
-
-  cd ${srcdir}/${pkgname}-${pkgver}-single
-  $MAKE -i clean
+      cd ${srcdir}/${pkgname}-${pkgver}-single
+      $MAKE -i clean
+  fi
 }
 
 build() {
@@ -52,6 +59,7 @@ build() {
 
   echo $CONFIGURE
   echo $MAKE
+  set -e
   # build double precision
   cd ${srcdir}/${pkgname}-${pkgver}-double
   $CONFIGURE --enable-sse2 --enable-avx --enable-avx2
@@ -61,6 +69,7 @@ build() {
   cd ${srcdir}/${pkgname}-${pkgver}-single
   $CONFIGURE --enable-float --enable-sse2 --enable-avx --enable-avx2
   $MAKE
+  set +e
 }
 
 check() {
@@ -92,7 +101,7 @@ then
   download
 fi
 
-# clean
+clean delete
 build
 # check
 package

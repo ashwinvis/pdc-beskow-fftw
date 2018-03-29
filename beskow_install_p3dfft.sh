@@ -13,9 +13,9 @@ pkgdir="$pkgdir/${pkgname}-${pkgver}"
 
 # FFTW
 # ----
-fftwdir="$(dirname $FFTW_DIR)"
+# fftwdir="$(dirname $FFTW_DIR)"
 autotoolsdir="/cfs/klemming/nobackup/${USER:0:1}/${USER}/opt"
-# fftwdir="$autotoolsdir"
+fftwdir="$autotoolsdir"
 
 # Should be no reason to change anything below
 # --------------------------------------------

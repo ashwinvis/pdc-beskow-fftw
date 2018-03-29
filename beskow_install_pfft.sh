@@ -7,12 +7,12 @@ source beskow_env.sh
 # as it is. See: https://github.com/mpip/pfft#install
 
 # You can use the same fftw directory that for p3dfft
-# fftwdir="$pkgdir"
+fftwdir=$(dirname $pkgdir)
 
 # Alternatively, set fftwdir as an empty string and mention fftw include and
 # library directories seperately below
-fftwinc=$FFTW_INC
-fftwlib=$FFTW_DIR
+# fftwinc=$FFTW_INC
+# fftwlib=$FFTW_DIR
 
 # Customizable variables
 # ----------------------

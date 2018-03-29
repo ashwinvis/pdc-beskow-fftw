@@ -11,16 +11,17 @@ FLAGS:= -g -Ofast -Wall
 LDFLAGS:=
 LIBS:= -ldl -lhwloc -lm -lgfortran
 
-OUTPUT:=test_output_huge32.txt
+OUTPUT:=test_output_fftw37.txt
 
+LIB_DIR:=
+INC_DIR:=
 ## If using preinstalled FFTW,
 ## `module load fftw`,
-## switch off FFTW_OMP, PFFT, P3DFFT and use the following 2 lines
 ## OR
 ## `module load cray-fftw`,
 ## switch off PFFT, P3DFFT and use the following 2 lines
-LIB_DIR:=-L$(FFTW_DIR)
-INC_DIR:=-I. -I../base -I$(INTEL_PATH)/compiler/include/ -I$(FFTW_INC)
+# LIB_DIR+=-L$(FFTW_DIR)
+# INC_DIR+=-I. -I../base -I$(INTEL_PATH)/compiler/include/ -I$(FFTW_INC)
 
 ## If using local installation for FFTW, P3DFFT and PFFT use:
 LIB_DIR+=-L$(SNIC_NOBACKUP)/opt/lib
